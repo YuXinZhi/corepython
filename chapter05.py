@@ -2,6 +2,11 @@
 第6章 序列：字符串、列表和元组
 
 '''
+'''
+    6.1.3 内建函数
+        1.类型转换：
+
+'''
 s="abcde"
 i=-1
 for i in range(-1,-len(s),-1):   #-1减到-5
@@ -10,6 +15,7 @@ print(list(range(-1,-len(s),-1)))
 
 for i in [None] + list(range(-1,-len(s),-1)):
     print(s[:i])
+
 
 
 
