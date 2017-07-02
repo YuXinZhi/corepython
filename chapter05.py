@@ -1,4 +1,27 @@
 '''
+第6章 序列：字符串、列表和元组
+
+'''
+s="abcde"
+i=-1
+for i in range(-1,-len(s),-1):   #-1减到-5
+    print(s[:i])
+print(list(range(-1,-len(s),-1)))
+
+for i in [None] + list(range(-1,-len(s),-1)):
+    print(s[:i])
+
+
+
+
+print("****************************")
+
+
+
+
+
+
+'''
 数字
 
 '''
@@ -64,3 +87,34 @@ print(dec)
 dec=Decimal('0.1')  #dec=0.1
 print(dec)
 #  dec=dec+0.1 (unsupported operand type(s) for +: 'decimal.Decimal' and 'float')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
