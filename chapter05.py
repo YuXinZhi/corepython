@@ -14,7 +14,7 @@ print(4**-1)    #0.25
     5.6.2 数字类型函数：
       （1）转换工厂函数：int()、float()、complex()、bool()
            工厂函数是指这些内建函数都是类对象，当你调用它时，实际上创建了一个类实例
-      （2）功能函数：abs()、coerce()、divmod()、pow()、round()
+      （2）功能函数：abs()、divmod()、pow()、round()
 **************************
 Python中的coerce()
 如果有一个操作数是复数， 另一个操作数被转换为复数。  
@@ -51,3 +51,16 @@ vt.	逼迫; 威胁; 强迫，强制; 控制，限制;
 '''
 i=int('010000010',base=2)
 print("i=",i)
+d=divmod(5,2)
+p=pow(5,2,4)        #pow(x,y,z)==p(x,y)%z
+r=round(5.333)
+print(d,p,r)
+print(d[0],d[1])
+
+from decimal import Decimal
+
+dec=Decimal(.1)     #dec=0.1000000000000000055511151231257827021181583404541015625
+print(dec)
+dec=Decimal('0.1')  #dec=0.1
+print(dec)
+#  dec=dec+0.1 (unsupported operand type(s) for +: 'decimal.Decimal' and 'float')
