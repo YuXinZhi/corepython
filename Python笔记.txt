@@ -1,0 +1,191 @@
+Python笔记
+
+1.数字（5种）
+	有符号整型
+	长整型
+	布尔型
+	浮点数
+	复数
+
+2.列表和元组
+	列表（[]）：元素个数和值可以改变
+	元组（()）：不可以更改
+
+3.字典（{}）:
+
+4.for语句
+	for item in ["first","second"]
+		print(item)
+	输出不换行
+	for item in ["first","second"]:
+		print(item,end=",")
+5.range()
+	接受一个范围，生成一个列表
+
+6.enumerate()，可以同时循环索引好和元组
+
+	s="hello "
+	for i,ch in enumerate(s):
+	    print(ch , '(%d)' % i,'s')
+
+7.列表解析
+	squared = [x ** 2 for x in range(5)]
+	squaredevens = [x ** 2 for x in range(5) if not x % 2]
+	for i in squared:
+	    print("squared = ",i,end=",")
+	print()
+	for i in squaredevens:
+	    print("squaredevens = ",i,end=",")
+输出：
+squared =  0,squared =  1,squared =  4,squared =  9,squared =  16,
+squaredevens =  0,squaredevens =  4,squaredevens =  16,
+
+8.文件和内建函数open(),file()
+	filename=input("enter file name：")
+	fobj=open(filename,'r')
+	for eachline in fobj:
+		print(eachline)
+	fobj.close
+
+9.错误和异常
+
+	try:
+	    filename=input("enter file name：")
+	    fobj=open(filename,'r')
+	    for eachline in fobj:
+		print(eachline,end="")
+	    fobj.close()
+	except IOError as e:		#***注意***（IOError as e）
+	    print("file open error:",e)
+输出结果：
+enter file name：ee
+file open error: [Errno 2] No such file or directory: 'ee'
+
+10.函数
+	10.1，Python函数通过引用调用，函数内对参数的改变会影响到原始对象，
+	      但只有可变对象会受到影响；
+	
+	默认参数
+	def defalut(debug=True):
+	    if debug :
+		print("debug")
+	    else :
+		print("not debug")
+	defalut()
+	defalut(False)
+输出：
+debug
+not debug
+
+11.类
+
+12.主程序
+	__name__指示模块如何被加载：
+	1.如果模块是被导入的，__name__的值是模块名；
+	2.如果模块是被直接执行，__name__的值为"__main__"。
+13.垃圾收集
+	Python的垃圾收集器实际上是一个引用计数器和一个循环垃圾收集器
+
+Chapter4
+
+4.1 Python对象
+	1.Python对象特性：身份（id()），类型（type()）和值
+	
+4.2 标准类型
+	数字（分为几种子类型，其中三个是整型）：
+	Integer
+	Boolean
+	Long Integer
+	Floating point real number
+	Complex number
+	String 
+	List
+	Tuple
+	Dictionary
+	标准数据类型也称“基本数据类型”，是Python内建的基本数据类型
+4.3 其他内建类型
+	类型
+	Null对象（None）
+	文件
+	集合/固定集合
+	函数/方法
+	模块
+	类
+4.3.1 类型对象和type类型对象
+
+4.5 标准类型操作符
+	4.5.1 对象值的比较（<,>,<=,>=,==,!=）
+	4.5.2 对象身份的比较
+	（1）foo1和foo2指向相同的对象
+		foo1=foo2=1.3
+	（2）foo1和foo2指向不同的对象
+		foo1=4.3
+		foo2=1.3+3.0
+	标准类型身份比较操作符（is，is not）
+	a is b 等价于 id(a)==id(b)
+
+4.6 标准类型内建函数（cmp(obj1,obj2),repr(obj),str(obj),type(obj)）
+	4.6.1	type() 接受一个对象作为参数，并返回它的类型。
+	它的返回值是一个类型对象
+	type(1)
+	<class 'int'>	#整型
+	type(type(1))
+	<class 'type'>	#type类型
+
+	4.6.4	type()和isinstance()
+
+def displayNumType(num):
+    print(num,'is ',end='')
+    if isinstance(num,(int,float,complex)):
+        print("a number of type:",type(num).__name__)
+    else:
+        print("not a number at all")
+
+displayNumType(-69)
+displayNumType(99999999999999999999999)
+displayNumType(70.3)
+displayNumType(-3.2+2.3j)
+displayNumType("haha")		
+输出：
+-69 is a number of type: int
+99999999999999999999999 is a number of type: int
+70.3 is a number of type: float
+(-3.2+2.3j) is a number of type: complex
+haha is not a number at all
+
+
+4.6.5 Python类型操作符和内建函数总结
+	>>> str("hello world")
+	'hello world'
+	>>> repr("hello world")
+	"'hello world'"
+	
+	str()转换后的字符串是给人看，repr()是Python看
+
+
+4.7 类型工厂函数
+
+
+4.8 标准类型的分类
+	4.8.1 存储模型：
+		标量/原子类型：数值、字符串
+		容器类型：列表、元组、字典
+	4.8.2 更新模型：
+		可变类型：列表、字典
+		不可变类型：数字、字符串、元组
+	4.8.3 访问类型（三种访问方式：直接存取、顺序和映射）：
+		直接存取：数字
+		顺序：字符串、列表、元组
+		映射：字典
+	
+	标准类型分类：
+
+	数据类型	存储模型	更新模型	访问模型
+**********************************************************************
+	数字		标量		不可更改	直接访问
+	字符串		标量		不可更改	顺序访问
+	列表		容器		可更改		顺序访问
+	元组		容器		不可更改	顺序访问
+	字典		容器		可更改		映射访问
+**********************************************************************
+
