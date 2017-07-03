@@ -27,3 +27,12 @@ print('\n')
 print('*'*20)
 print(r'\n')
 print('*'*20)
+
+
+print("***isinstance()***")
+print(isinstance(u'\0xAB',str))
+print("******************")
+
+a=(2,'2')
+b=(2,'2')
+print(a==b,id(a),id(b))  #True 31981640 31981896
